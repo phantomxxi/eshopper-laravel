@@ -15,7 +15,8 @@ class HomeController extends Controller
         $sliders = Slider::latest()->get();
         $categorys = Category::where('parent_id', 0)->get();
         $products = Product::latest()->take(6)->get(); //dung eloquent take de lay 6 feature product
-        return view('home.home', compact('sliders', 'categorys', 'products'));
+        $productsRecommend = Product::latest('views_count', 'desc')->take(12)->get();
+        return view('home.home', compact('sliders', 'categorys', 'products', 'productsRecommend'));
     }
 
     public function test()
