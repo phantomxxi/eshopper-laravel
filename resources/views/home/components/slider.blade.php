@@ -1,5 +1,5 @@
 @php
-$baseUrl = 'http://localhost:8081';
+$baseUrl = config('app.base_url');
 @endphp
 
 <section id="slider"><!--slider-->
