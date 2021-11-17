@@ -15,4 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/test', 'HomeController@test');
+Route::get('/category/{slug}/{id}', [
+    'as' => 'category.product',
+    'uses' => 'CategoryController@index'
+]);
