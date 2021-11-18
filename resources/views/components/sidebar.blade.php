@@ -7,17 +7,23 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordian" href="#sportswear_{{$category->id}}">
+                            @if($category->categoryChildrent->count())
+                                <a data-toggle="collapse" data-parent="#accordian" href="#sportswear_{{$category->id}}">
                                 <span class="badge pull-right">
-                                    {{-- Kiem tra xem nhung category cha nao co con thi  moi hien icon plus --}}
-                                    @if($category->categoryChildrent->count())
                                         <i class="fa fa-plus"></i>
-                                    @endif
                                 </span>
-                                {{$category->name}}
-                            </a>
+                                    {{$category->name}}
+                                </a>
+                            @else
+                                <a href="{{ route('category.product', ['slug' => $categoryChildrent->slug, 'id' => $categoryChildrent->id]) }}">
+                                <span class="badge pull-right">
+                                </span>
+                                    {{$category->name}}
+                                </a>
+                            @endif
                         </h4>
                     </div>
+
                     <div id="sportswear_{{$category->id}}" class="panel-collapse collapse">
                         <div class="panel-body">
                             <ul>

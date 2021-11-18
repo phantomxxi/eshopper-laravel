@@ -12,6 +12,7 @@ class CategoryController extends Controller
     {
         $categorysLimit = Category::where('parent_id', 0)->take(3)->get();
         $products = Product::where('category_id', $categoryId)->paginate(12);
-        return view('product.category.list', compact('categorysLimit', 'products'));
+        $categorys = Category::where('parent_id', 0)->get();
+        return view('product.category.list', compact('categorysLimit', 'products', 'categorys'));
     }
 }
